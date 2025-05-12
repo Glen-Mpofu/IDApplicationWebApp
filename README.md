@@ -22,3 +22,9 @@ Running instructions/requirements
 NetBeans 8 or higher
 Glassfish server
 DerbyDB
+
+Members
+TM Mpofu 224883773
+MW Mokala 231031090 
+YM Khoza 231345710  
+DA Bhimjee 231118500 
