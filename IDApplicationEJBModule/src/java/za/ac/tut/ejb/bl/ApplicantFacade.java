@@ -5,6 +5,7 @@
 package za.ac.tut.ejb.bl;
 
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,6 +32,7 @@ public class ApplicantFacade extends AbstractFacade<Applicant> implements Applic
         super(Applicant.class);
     }
 
+     @RolesAllowed("admin")
     @Override
     public List<Applicant> viewByGender(char gender) {
         Query query = em.createQuery("SELECT a FROM Applicant a WHERE a.gender = ?1");
@@ -38,12 +40,33 @@ public class ApplicantFacade extends AbstractFacade<Applicant> implements Applic
         List<Applicant> applicants = query.getResultList();
         return applicants;
     }
-
+    
+    @RolesAllowed("admin")
     @Override
     public List<Applicant> viewByProvince(String province) {
         Query query = em.createQuery("SELECT a FROM Applicant a WHERE a.address.province = ?1");
         query.setParameter(1, province);
         List<Applicant> applicants = query.getResultList();
         return applicants;
+    }
+
+    @RolesAllowed("admin")
+    @Override
+    public void sendId(Object id) {
+        Applicant app = find(id);
+        remove(app);
+    }
+
+    @RolesAllowed("admin")
+    @Override
+    public void deleteFraudulentApplications(Applicant app) {
+        remove(app);
+    }
+
+    @RolesAllowed("admin")
+    @Override
+    public List<Applicant> viewAllApplications() {
+        List<Applicant> list = findAll();
+        return list;
     }
 }
