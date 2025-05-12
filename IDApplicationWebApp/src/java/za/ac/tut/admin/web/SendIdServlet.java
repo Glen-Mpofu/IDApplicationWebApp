@@ -25,9 +25,8 @@ public class SendIdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("id"));
-        Applicant app = afl.find(id);
         
-        afl.remove(app);
+        afl.sendId(id);
         
         RequestDispatcher disp = request.getRequestDispatcher("id_sent.jsp");
         disp.forward(request, response);
