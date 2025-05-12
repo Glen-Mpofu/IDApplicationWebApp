@@ -25,7 +25,7 @@ public class ViewAllApplicationsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Applicant> applicants = afl.findAll();
+        List<Applicant> applicants = afl.viewAllApplications();
         request.setAttribute("applicants", applicants);
         
         RequestDispatcher disp = request.getRequestDispatcher("all_applications.jsp");
