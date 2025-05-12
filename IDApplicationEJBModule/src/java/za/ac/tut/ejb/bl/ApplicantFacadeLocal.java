@@ -33,4 +33,10 @@ public interface ApplicantFacadeLocal {
     List<Applicant> viewByGender(char gender);
     
     List<Applicant> viewByProvince(String province);
+
+    void sendId(Object id);
+    
+    void deleteFraudulentApplications(Applicant app);
+    
+    List<Applicant> viewAllApplications();
 }
