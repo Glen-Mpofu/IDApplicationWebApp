@@ -27,7 +27,8 @@ public class DeleteApplicationServlet extends HttpServlet {
         Long id = Long.parseLong(request.getParameter("id"));
         Applicant app = afl.find(id);
         
-        afl.remove(app);
+        afl.deleteFraudulentApplications(app);
+        
         RequestDispatcher disp = request.getRequestDispatcher("application_deleted.jsp");
         disp.forward(request, response);
     }
