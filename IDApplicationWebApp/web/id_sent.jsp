@@ -16,6 +16,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="apply.jsp">Application Form</a></li>
+            <li><a href="LogoutServlet.do">Logout</a></li>
         </ul>
     </body>
 </html>
